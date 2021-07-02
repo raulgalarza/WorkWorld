@@ -1,0 +1,116 @@
+﻿@model Usuario1
+
+@{
+    ViewData["Title"] = "Register";
+}
+
+@Html.Raw(TempData["Notificacion"])
+
+<head>
+    <title>Registro</title>
+    <link rel="stylesheet" type="text/css" href="~/css/Register_login.css">
+</head>
+<body class="second-body">
+
+    <div class="container">
+
+        <main>
+
+            <section class="img-side">
+                <img src="~/img/munequita.jpg">
+            </section>
+
+            <section class="form-side">
+
+                <div class="form-container">
+
+                    <header>
+                        <div>
+                            <h1>Regístrate</h1>
+                            <p>Hazlo para ofrecer ofertas y <br /> nuevas oportunidades de empleo</p>
+                        </div>
+
+                        <div>
+                            <img src="https://image.flaticon.com/icons/png/128/3534/3534139.png">
+                        </div>
+                    </header>
+
+                    @using (Html.BeginForm("Register", "Acceso", FormMethod.Post))
+                    {
+
+                        <div class="form-text-piece">
+                            <div>
+                                <label>Nombre</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                @Html.ValidationMessageFor(n => n.Nombre, null, new { @class = "text-danger" })
+                            </div>
+                            @Html.TextBoxFor(u => u.Nombre, null, new { Autocomplete = "off" })
+                        </div>
+
+                        <div class="form-text-piece">
+                            <div>
+                                <label>Apellido</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                @Html.ValidationMessageFor(n => n.Apellido, null, new { @class = "text-danger" })
+                            </div>
+                            @Html.TextBoxFor(u => u.Apellido, null, new { Autocomplete = "off" })
+                        </div>
+
+                        <div class="form-text-piece">
+                            <div>
+                                <label>Email personal</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                @Html.ValidationMessageFor(n => n.Email, null, new { @class = "text-danger" })
+                            </div>
+                            @Html.TextBoxFor(u => u.Email, null, new { Autocomplete = "off" })
+                        </div>
+
+                        <div class="form-text-piece">
+                            <div>
+                                <label>Email de empresa</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                @Html.ValidationMessageFor(n => n.Email_emp, null, new { @class = "text-danger" })
+                            </div>
+                            @Html.TextBoxFor(u => u.Email_emp, null, new { Autocomplete = "off" })
+                        </div>
+
+                        <div class="form-text-piece">
+                            <label>URL empresa <span class="sugerencia">&nbsp;&nbsp;&nbsp;(opcional)</span></label>
+                            <div>
+                                @Html.TextBoxFor(u => u.Url, null, new { Autocomplete = "off" }) &nbsp;&nbsp;
+                            </div>
+                        </div>
+
+                        <div class="form-text-piece">
+                            <div>
+                                <label>Telefono</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                @Html.ValidationMessageFor(n => n.Telefono, null, new { @class = "text-danger" })
+                            </div>
+                            @Html.TextBoxFor(u => u.Telefono, string.Empty, new { Autocomplete = "off" }) &nbsp;&nbsp;
+                        </div>
+
+                        <div class="form-text-piece">
+                            <div>
+                                <label>Nombre de Usuario <span class="sugerencia">&nbsp;&nbsp;(recordar)</label> &nbsp;&nbsp;&nbsp;&nbsp;
+                                @Html.ValidationMessageFor(n => n.Username, null, new { @class = "text-danger" })
+                            </div>
+                            @Html.TextBoxFor(u => u.Username, null, new { Autocomplete = "off" }) &nbsp;&nbsp;
+                        </div>
+
+                        <div class="form-text-piece">
+                            <div>
+                                <label>Contraseña <span class="sugerencia">&nbsp;&nbsp;&nbsp;(recordar)</label> &nbsp;&nbsp;&nbsp;&nbsp;
+                                @Html.ValidationMessageFor(n => n.Contraseña, null, new { @class = "text-danger" })
+                            </div>
+                            @Html.TextBoxFor(u => u.Contraseña, null, new { Autocomplete = "off" }) &nbsp;&nbsp;
+                        </div>
+                        <input type="text" name="Rol" value="Poster" hidden="hidden"> //Rol por defecto del usuario que se registra (no cambiar) !
+                        <div>
+                            <button type="submit" id="registrarse-btn">Listo</button>
+                        </div>
+                    }
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+</body>

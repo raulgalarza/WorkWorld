@@ -1,0 +1,74 @@
+@model MVC_Proyect.Models.Offer_Job
+
+@{
+    ViewData["Title"] = "SearchJob";
+    var empleos = ViewData["Jobs"] as List<Offer_Job>;
+    var Ciudades = ViewData["Ciudades"] as List<string>;
+
+}
+
+<link rel="stylesheet" href="~/css/CSStyles2.css" />
+
+<main>
+    <section class="landing">
+        <h1>Encuentra el trabajo Ideal</h1>
+        <img src="~/img/landing2.svg" alt="" width="400px">
+    </section>
+
+        <form asp-action="SearchJob" asp-controller="Job" method="POST">
+        <section class="job-searcher">
+            <div class="job-filter">
+                <img src="~/img/search.svg" alt="" width="40px">
+                <input type="text" name="Posicion" id="" placeholder="Nombre del Trabajo">
+            </div>
+
+            <div class="job-filter">
+                <img src="~/img/placeblue.svg" alt="" width="40px">
+                <select name="Ciudad" id="">
+                    <option value="0">Ubicacion del Empleo </option>
+                    @foreach (var x in Ciudades)
+                        {
+                        <option value="@x">@x </option>
+                        }
+                </select>
+            </div>
+
+            <div class="btn">
+                <input type="submit" name="" id="" value="Buscar Empleo">
+            </div>
+        
+        </section>
+    </form>
+
+    <section class="recent-job">
+        <h2 class="recent-job-title"> @empleos.Count Ofertas Encontradas:</h2>
+        <div class="container">
+            <div class="job-list">
+
+                @foreach (var job in empleos)
+                {
+                    <div class="job">
+                        <div class="job-header">
+                            <img src="~/img/defaultwork.svg" alt="" width="90px">
+
+                            <div>
+                                <br>
+                                <h2>@job.Posicion</h2>
+                                <br> <br>
+                                <p><strong>Ciudad: </strong>@job.Ciudad&nbsp;&nbsp;&nbsp;&nbsp;</p>
+                                <p><strong>Sueldo: </strong>A discutir</p>
+                            </div>
+                        </div>
+
+                        <div class="job-body">
+                            <p>@job.Descripcion</p>
+                        </div>
+
+                        <a href="" class="job-end">Aplicar</a>
+
+                    </div>
+                }
+            </div>
+        </div>
+    </section>
+</main>
